@@ -1,0 +1,99 @@
+/* Base styles – mobile-first */
+html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 1.95em;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  li {
+    margin-top: 20px;
+  }
+  
+  img {
+    width: 100%;
+  }
+  
+  .label {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  /* Mobile view: one column grid with 10px gaps */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  /* Tablet view: triggers at 772px */
+  @media (min-width: 772px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px; /* Maintain consistent gap */
+    }
+  
+    /* Make figures circular */
+    figure {
+      border-radius: 50%;
+      overflow: hidden; /* Ensure content fits within circular shape */
+    }
+  
+    /* Last figure spans both columns */
+    .grid figure:last-child {
+      grid-column: span 2;
+    }
+  }
+  
+  /* Large screen view: triggers at 992px */
+  @media (min-width: 992px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px; /* Maintain consistent gap */
+    }
+  
+    /* Every third figure spans both columns */
+    .grid figure:nth-child(3n) {
+      grid-column: span 2;
+    }
+  
+    /* Remove figure border radius */
+    figure {
+      border-radius: 0;
+      overflow: visible; /* Reset overflow for non-circular figures */
+    }
+  }
+  
+  /* Prefers-reduced-motion: remove smooth scroll */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  
+  /* Dark mode adjustments */
+  @media (prefers-color-scheme: dark) {
+    figure {
+      background-color: #333; /* Dark background color */
+      color: #ffcc00; /* Yellow-ish font color */
+      border: 5px solid black; /* Black border */
+      padding: 10px; /* Optional padding for better visibility in dark mode */
+      transition: none; /* Avoid animations in dark mode for simplicity */
+    }
+  }
+  
